@@ -1,0 +1,50 @@
+site_name: Mesh Navigation Documentation
+site_url: https://naturerobots.github.io/mesh_navigation_docs
+
+repo_name: Github
+repo_url: https://github.com/naturerobots/mesh_navigation
+
+docs_dir: docs
+theme:
+    name: material
+    features:
+      - navigation.instant
+      - navigation.tabs
+      - navigation.sections
+      - navigation.footer
+    logo: resources/img/mesh_nav_logo.png
+    favicon: resources/img/mesh_nav_icon.png
+    palette:
+      primary: blue
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.details
+  - admonition
+  - attr_list
+
+validation:
+  links:
+    absolute_links: relative_to_docs
+
+nav:
+  - Home:
+    - Overview: index.md
+    - Installation: installation.md
+  - Theory:
+    - Why Meshes: theory/mesh_maps.md
+  - Tutorials:
+    - Overview: tutorials/index.md
+    - Mesh Mapping: tutorials/mesh_mapping.md
+    - Cost Layers Generation: tutorials/cost_layer_generation.md
+    - Localization: tutorials/localization.md
+    - Mesh Navigation: tutorials/mesh_navigation.md
+    - Deliberation: tutorials/deliberation.md
+  - Library:
+    - Cost Layer Plugin: library/cost_layer_plugin.md
+    - Planner Plugin: library/planner_plugin.md
+    - Controller Plugin: library/controller_plugin.md
+
+
