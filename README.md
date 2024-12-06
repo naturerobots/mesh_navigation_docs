@@ -1,4 +1,4 @@
-# Rmagine
+# Mesh Navigation Docs
 
 These docs are built with [MkDocs](https://mkdocs.org) and published to [naturerobots.github.io/mesh_navigation_docs](https://naturerobots.github.io/mesh_navigation_docs)
 
