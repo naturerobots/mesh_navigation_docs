@@ -1,22 +1,21 @@
 <div align="center" min-width=519px>
-  <img src="/media/mesh_navigation_logo.png" alt="Mesh Navigation" height=150 />  
+  <img src="media/mesh_nav_logo.png" alt="Mesh Navigation" height=200 />  
 </div>
 <h4 align="center">Mesh Navigation Documentation</h4>
-<div align="center">
-  <a href="https://github.com/naturerobots/mesh_navigation">Code</a>
-  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://github.com/naturerobots/mesh_tools">Mesh Tools</a>
-  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://github.com/naturerobots/move_base_flex">Move Base Flex</a>
-  <span>&nbsp;&nbsp;•&nbsp;&nbsp;</span>
-  <a href="https://www.youtube.com/@nature-robots">Videos</a>
 
-  <br />
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;" >
+    <iframe src="https://www.youtube.com/embed/gvKsW5MEC4Y?si=WohSZ_lEdIbxAZZK?autoplay=1&mute=1" 
+            title="YouTube Video" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
 </div>
 
+<br/>
 
 # Documentation
-
 
 This documentation is under construction. It will contain both explanations for more applied users and for developers.
 
@@ -24,32 +23,18 @@ This documentation is under construction. It will contain both explanations for 
 
 This documentation cosists of several examples, guides and conceptual explanations to give users a more thourough understanding of [mesh_navigation](https://github.com/naturerobots/mesh_navigation).
 
-**Mesh Navigation**
+**Getting Started**
 
 - [Overview](/index.md)
 - [Installation](/installation.md)
+- [Run](/run.md)
 
-**Theory**
-- [Why Meshes?](/theory/mesh_maps.md)
+**Documentation**
 
-**Tutorials**
-
-Guides:
-1. [Mesh Mapping](/tutorials/mesh_mapping.md)
-2. [Cost Layers Generation](/tutorials/cost_layer_generation.md)
-3. [Localization](/tutorials/localization.md)
-4. [Mesh Navigation](/tutorials/mesh_navigation.md)
-5. [Deliberation](/tutorials/deliberation.md)
-
-**Library**
-
-Writing own plugins for
-- [Cost Layer](/library/cost_layer_plugin.md)
-- [Planner](/library/planner_plugin.md)
-- [Controller](/library/controller_plugin.md)
-
-**Guides**
-TODO
+- [Theory](/theory/index.md)
+- [Tutorials](tutorials/index.md)
+- [Library](/library/index.md)
+- [Guides](/guides/index.md)
 
 ## Contributions
 

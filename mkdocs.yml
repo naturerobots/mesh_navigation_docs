@@ -6,16 +6,19 @@ repo_url: https://github.com/naturerobots/mesh_navigation
 
 docs_dir: docs
 theme:
-    name: material
-    features:
-      - navigation.instant
-      - navigation.tabs
-      - navigation.sections
-      - navigation.footer
-    logo: resources/img/mesh_nav_logo.png
-    favicon: resources/img/mesh_nav_icon.png
-    palette:
-      primary: blue
+  name: material
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.sections
+    - navigation.footer
+  logo: media/mesh_nav_icon_bg_white.png
+  favicon: media/mesh_nav_icon.png
+  palette:
+    primary: blue
+
+extra_css:
+  - static/stylesheets/style.css
 
 markdown_extensions:
   - pymdownx.highlight
@@ -34,17 +37,31 @@ nav:
     - Overview: index.md
     - Installation: installation.md
   - Theory:
+    - Overview: theory/index.md
     - Why Meshes: theory/mesh_maps.md
   - Tutorials:
     - Overview: tutorials/index.md
-    - Mesh Mapping: tutorials/mesh_mapping.md
-    - Cost Layers Generation: tutorials/cost_layer_generation.md
-    - Localization: tutorials/localization.md
-    - Mesh Navigation: tutorials/mesh_navigation.md
-    - Deliberation: tutorials/deliberation.md
+    - General:
+      - Overview: tutorials/index.md
+      - Mesh Mapping: tutorials/mesh_mapping.md
+      - Cost Layers Generation: tutorials/cost_layer_generation.md
+      - Localization: tutorials/localization.md
+      - Mesh Navigation: tutorials/mesh_navigation.md
+      - Deliberation: tutorials/deliberation.md
+    - Worlds:
+      - Simple: tutorials/worlds/simple.md
+      - Real-World: tutorials/worlds/real_world.md
+    - Mesh Editing:
+      - Flatten Surfaces: tutorials/editing/flatten_surface.md
+      - Align Mesh to Ground: tutorials/editing/align_mesh_to_ground.md
+    - Writing Plugins:
+      - Own Cost Layer: tutorials/plugins/own_cost_layer.md
   - Library:
+    - Overview: library/index.md
     - Cost Layer Plugin: library/cost_layer_plugin.md
     - Planner Plugin: library/planner_plugin.md
     - Controller Plugin: library/controller_plugin.md
+  - Guides:
+    - Overview: guides/index.md
 
 

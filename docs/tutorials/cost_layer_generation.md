@@ -16,9 +16,7 @@ Some useful cost layers are already implemented such as
 - height difference
 - border
 
-All these layers are described in [mesh navigation](https://github.com/naturerobots/mesh_navigation). In addition, [mesh navigation](https://github.com/naturerobots/mesh_navigation) provides simple interfaces to implement own kinds of cost layers. This [article](./OwnCostLayer) describes the usage of this interface in greater detail.
-
-
+All these layers are described in [mesh navigation](https://github.com/naturerobots/mesh_navigation). In addition, [mesh navigation](https://github.com/naturerobots/mesh_navigation) provides simple interfaces to implement cost layers as plugins which is described here: [Link](/tutorials/plugins/own_cost_layer.md).
 
 ## Initial Cost Layer Generation
 
