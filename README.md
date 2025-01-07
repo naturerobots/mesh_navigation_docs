@@ -4,7 +4,7 @@ These docs are built with [MkDocs](https://mkdocs.org) and published to [naturer
 
 ## Build locally
 
-### Install mkdocs tooling
+### Install mkdocs
 
 #### Using pip
 
@@ -29,13 +29,15 @@ Will create an conda environment named `mesh_navigation_docs`. Enable it by call
 conda activate mesh_navigation_docs
 ```
 
-### Build Static Files
+### Run mkdocs
+
+#### Build Static Files
 
 ```
 mkdocs build --strict
 ```
 
-### Live reloading server on :8000
+#### Live reloading server on :8000
 
 ```
 mkdocs serve --strict
