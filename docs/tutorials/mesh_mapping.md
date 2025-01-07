@@ -125,24 +125,25 @@ Open3D is a versatile open-source library for 3D data processing that provides t
 import open3d as o3d
 import sys
 
-"""
-This script reconstructs surfaces from a point cloud using Poisson Surface reconstruction
-using Open3D's API (version 0.18.0)
+# parameters for normal estimation for each point in PCD
+ne_max_radius = 0.1 # choose this dependent on the scale and density of your PCD
+ne_max_nn = 30 # choose this dependent on density of your PCD
 
-Input: point cloud -> Output: mesh
-"""
+# parameters for poission reconstruction
+possion_depth = 11 # the higher the more details, the more RAM is used
+density_filter = 0.05 # filter surface patches with low 'evidence'
+
+# This script reconstructs surfaces from a point cloud using Poisson Surface reconstruction
+# using Open3D's API (version 0.18.0)
+# 
+# Input: point cloud -> Output: mesh
 if __name__ == '__main__':
     file_in = sys.argv[1]
     file_out = sys.argv[2]
-
     pcd = o3d.io.read_point_cloud(file_in)
 
     print("Estimating point normals...")
-    pcd.estimate_normals(search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=30))
-
-    # Tweek the following parameters
-    depth = 11 # the higher the more details, the more RAM is used
-    density_filter = 0.05
+    pcd.estimate_normals(search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=ne_max_radius, max_nn=ne_max_nn))
 
     print("Starting Poisson surface reconstruction...")
     mesh, densities = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(pcd, depth=depth)
@@ -150,7 +151,7 @@ if __name__ == '__main__':
     print("Removing vertices with low Poission density")
     vertices_to_remove = densities < np.quantile(densities, density_filter)
     mesh.remove_vertices_by_index(np.where(vertices_to_remove)[0])
-    
+
     # Save the mesh
     o3d.io.write_triangle_mesh(file_out, mesh)
 ```
