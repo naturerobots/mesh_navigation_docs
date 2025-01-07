@@ -1,0 +1,5 @@
+name: mesh_navigation_docs
+dependencies:
+  - python=3.12
+  - mkdocs>=1.6
+  - mkdocs-material

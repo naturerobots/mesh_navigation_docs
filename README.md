@@ -4,6 +4,10 @@ These docs are built with [MkDocs](https://mkdocs.org) and published to [naturer
 
 ## Build locally
 
+### Install mkdocs
+
+#### Using pip
+
 ```
 sudo apt install python3-pip
 pip3 install "mkdocs>=1.6" mkdocs-material
@@ -11,13 +15,29 @@ pip3 install "mkdocs>=1.6" mkdocs-material
 
 *Note: you may need to adapt your path `export PATH=$PATH:/home/<USER>/.local/bin` to access mkdocs binary*
 
-### Build Static Files
+#### Using conda
+
+After downloading go into the folder of this repository.
+
+```bash
+conda env create -f environment.yml
+```
+
+Will create an conda environment named `mesh_navigation_docs`. Enable it by calling
+
+```bash
+conda activate mesh_navigation_docs
+```
+
+### Run mkdocs
+
+#### Build Static Files
 
 ```
 mkdocs build --strict
 ```
 
-### Live reloading server on :8000
+#### Live reloading server on :8000
 
 ```
 mkdocs serve --strict
