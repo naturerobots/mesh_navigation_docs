@@ -24,6 +24,7 @@ Mesh Editing:
 
 - [Flatten Floor](/tutorials/editing/flatten_surface.md)
 - [Align Mesh to Ground](/tutorials/editing/align_mesh_to_ground.md)
+- [Shrink Faces](/tutorials/editing/shrink_faces.md)
 
 
 
