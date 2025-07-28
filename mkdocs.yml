@@ -28,7 +28,9 @@ markdown_extensions:
   - admonition
   - attr_list
 
-
+validation:
+  links:
+    absolute_links: relative_to_docs
 
 nav:
   - Home:
