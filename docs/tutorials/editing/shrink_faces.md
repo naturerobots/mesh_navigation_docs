@@ -17,7 +17,9 @@ However, some algorithms require a certain triangle density to function properly
 ![ShrinkFaces02](/media/shrink_faces_02_orig_rviz.png)
 
 In this visualization, you can see that each edge is assigned a cost inferred from the two vertices it connects. In this case, the edge receives a "bad" value because both vertices are in a dangerous region. Other problems that arise when using such low-resolution meshes for planning include:
+
 - Graph search algorithms may be forced to choose dangerous paths.
+
 - Cost inflation effects cannot be represented with sufficient resolution.
 
 One solution is to prepare the map with faces that are small enough. Fortunately, once we have a mesh, this operation is relatively straightforward:
