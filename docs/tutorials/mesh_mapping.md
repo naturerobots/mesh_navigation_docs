@@ -69,8 +69,8 @@ It is also possible to convert certain data structures to others. Here a list:
 | Name | Link | Comments | MeshNav-proved? |
 |:----|:----|:--------|:-----|
 | lvr2 | https://github.com/uos/lvr2 | `lvr2_reconstruct` executable | yes |
-| Open3D | https://www.open3d.org/ | Example Open3D scripts: [Link](https://github.com/naturerobots/open3d_scripts) | yes |
 | meshlab | https://www.meshlab.net/ |  | yes |
+| Open3D | https://www.open3d.org/ | Example Open3D scripts: [Link](https://github.com/naturerobots/open3d_scripts) | yes |
 
 
 #### LVR2
@@ -107,6 +107,56 @@ Some important parameters are:
 
 There are more parameters that influence the way lvr2 is reconstructing surfaces from point clouds.
 My advise is to just test them and see what changes.
+
+
+#### Meshlab
+
+MeshLab is an open-source software designed for processing and editing 3D triangular meshes, widely used for reconstructing surfaces from point clouds.
+It supports various algorithms to convert unstructured point clouds into coherent triangular meshes, such as Poisson surface reconstruction, and Marching Cubes.
+
+Further resources:
+- "Meshing Point Clouds": [https://meshlabstuff.blogspot.com/2009/09/meshing-point-clouds.html](https://meshlabstuff.blogspot.com/2009/09/meshing-point-clouds.html)
+
+#### Open3D
+
+Open3D is a versatile open-source library for 3D data processing that provides tools for surface reconstruction from point clouds using methods like Poisson reconstruction and alpha shapes. The following example showcases the usage of the python API to Poission reconstruction to extract surfaces:
+
+```python
+import open3d as o3d
+import sys
+
+# parameters for normal estimation for each point in PCD
+ne_max_radius = 0.1 # choose this dependent on the scale and density of your PCD
+ne_max_nn = 30 # choose this dependent on density of your PCD
+
+# parameters for poission reconstruction
+possion_depth = 11 # the higher the more details, the more RAM is used
+density_filter = 0.05 # filter surface patches with low 'evidence'
+
+# This script reconstructs surfaces from a point cloud using Poisson Surface reconstruction
+# using Open3D's API (version 0.18.0)
+# 
+# Input: point cloud -> Output: mesh
+if __name__ == '__main__':
+    file_in = sys.argv[1]
+    file_out = sys.argv[2]
+    pcd = o3d.io.read_point_cloud(file_in)
+
+    print("Estimating point normals...")
+    pcd.estimate_normals(search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=ne_max_radius, max_nn=ne_max_nn))
+
+    print("Starting Poisson surface reconstruction...")
+    mesh, densities = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(pcd, depth=depth)
+
+    print("Removing vertices with low Poission density")
+    vertices_to_remove = densities < np.quantile(densities, density_filter)
+    mesh.remove_vertices_by_index(np.where(vertices_to_remove)[0])
+
+    # Save the mesh
+    o3d.io.write_triangle_mesh(file_out, mesh)
+```
+
+Further examples can be inferred from the official Open3D documention page: [https://www.open3d.org/docs/release/](https://www.open3d.org/docs/release/).
 
 ## Optimization
 
