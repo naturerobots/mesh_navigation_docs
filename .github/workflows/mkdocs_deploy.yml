@@ -4,9 +4,9 @@ name: Build Documentation using MkDocs
 # events but only for the master branch
 on:
   push:
-    branches: [deploy]
+    branches: [main]
   pull_request:
-    branches: [deploy]
+    branches: [main]
 permissions:
   contents: write
 jobs:
@@ -14,19 +14,10 @@ jobs:
     name: Build and Deploy Documentation
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Master
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install mkdocs-material
-
-      - name: Deploy
-        run: |
-          mkdocs gh-deploy --strict
+      - name: Deploy Docs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
