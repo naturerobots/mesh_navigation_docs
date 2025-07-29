@@ -36,6 +36,7 @@ nav:
   - Home:
     - Overview: index.md
     - Installation: installation.md
+    - Run: run.md
   - Theory:
     - Overview: theory/index.md
     - Why Meshes: theory/mesh_maps.md
