@@ -12,6 +12,7 @@ theme:
     - navigation.tabs
     - navigation.sections
     - navigation.footer
+    - content.code.copy
   logo: media/mesh_nav_icon_bg_white.png
   favicon: media/mesh_nav_icon.png
   palette:

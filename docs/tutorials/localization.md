@@ -9,10 +9,32 @@ In 3D, it requires carefully designed software or special hardware to run online
 Therefore, implementations of 3D MCL are rarely seen right now.
 
 However, other computationally more lightweight approaches exist.
-For example, pose tracking in meshes using [MICP-L](https://github.com/uos/rmcl).
+For example, pose tracking in meshes using the MICP-L method of the [RMCL](https://github.com/uos/rmcl) project.
 It assumes that the robot pose is roughly known in advance.
 
 [![Teaser](/media/micp.gif)](http://www.youtube.com/watch?v=G-Z5K0bPFFU)
+
+
+!!! hint
+
+    The next steps in this section require RMCL to be compiled within your ROS workspace.
+
+Some nodes of the [RMCL](https://github.com/uos/rmcl) project are directly integrated within the [tutorials](https://github.com/naturerobots/mesh_navigation_tutorials).
+You can activate it's MICP-L pose tracking method  by setting the launch argument `localization` to `rmcl_micpl`.
+
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=tray localization:=rmcl_micpl
+```
+
+Whats happening internally: The localization that was previously given by the Gazebo simulation is now replaced by MICP-L, a method that continuously registers the LiDAR scans to the mesh map.
+Enabling a "real" localization has several advantages:
+
+- Easier integration into real-world systems: Gazebo-like ground truth is usually not available there unless you have a tracking system.
+- Realistic problems that could effect navigation algorithms: Localization latency, localization inaccuracies, localization failures, additional computational loads.
+
+!!! Info
+
+    For more details about the MICP-L method we refer to the [paper](https://ieeexplore.ieee.org/document/10802360) or the [ROSCon Talk](https://vimeo.com/879000775).
 
 ## Localization in other maps
 
