@@ -29,6 +29,14 @@ markdown_extensions:
   - admonition
   - attr_list
 
+plugins:
+  - mkdocs-video:
+      is_video: True
+      video_muted: True
+      video_controls: True
+      css_style:
+        width: "100%"
+
 validation:
   links:
     absolute_links: relative_to_docs
@@ -43,20 +51,20 @@ nav:
     - Why Meshes: theory/mesh_maps.md
   - Tutorials:
     - Overview: tutorials/index.md
-    - General:
+    - Quick-Start:
       - Overview: tutorials/index.md
-      - Mesh Mapping: tutorials/mesh_mapping.md
-      - Cost Layers Generation: tutorials/cost_layer_generation.md
-      - Localization: tutorials/localization.md
       - Mesh Navigation: tutorials/mesh_navigation.md
+      - Cost Layers: tutorials/mesh_cost_layers.md
+      - Planner & Controller: tutorials/planner_and_controller.md
+      - Virtual Worlds: tutorials/tutorial_worlds.md
+    - Sim-To-Real:
+      - Localization: tutorials/localization.md
       - Deliberation: tutorials/deliberation.md
-    - Worlds:
-      - Simple: tutorials/worlds/simple.md
-      - Real-World: tutorials/worlds/real_world.md
-    - Mesh Editing:
-      - Flatten Surfaces: tutorials/editing/flatten_surface.md
-      - Align Mesh to Ground: tutorials/editing/align_mesh_to_ground.md
-      - Shrink Faces: tutorials/editing/shrink_faces.md
+    - Mesh Generation & Editing:
+      - Mesh Mapping: tutorials/gen_edit/mesh_mapping.md
+      - Flatten Surfaces: tutorials/gen_edit/flatten_surface.md
+      - Align Mesh to Ground: tutorials/gen_edit/align_mesh_to_ground.md
+      - Shrink Faces: tutorials/gen_edit/shrink_faces.md
     - Writing Plugins:
       - Own Cost Layer: tutorials/plugins/own_cost_layer.md
   - Library:

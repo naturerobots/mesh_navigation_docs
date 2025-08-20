@@ -1,9 +1,9 @@
 # Mesh Navigation
 
+
 Inputs:
 
 - Mesh Geometry
-- Cost Layers for Navigation
 - Localization
 - Target Pose
 
@@ -11,6 +11,10 @@ Output: Control Signals
 
 ## Parameters
 
+
+!!! note
+
+    Note: Open [this](https://github.com/naturerobots/mesh_navigation_tutorials/blob/main/mesh_navigation_tutorials/config/mbf_mesh_nav.yaml) to access the most recent config file.
 
 ```yaml
 move_base_flex:
@@ -253,8 +257,8 @@ The following parameters are used to describe general map information, the way t
 
 ```yaml
 mesh_map:
-  mesh_file: 'path/to/my_layered_mesh_map.h5'
-  mesh_part: 'mesh' # reference to hdf5 mesh
+  mesh_file: 'path/to/my_layered_mesh_map.ply'
+  mesh_part: '/' # reference to mesh
 
   # list of available layers
   layers: ['border', 'height_diff', 'roughness', 'inflation']
@@ -286,7 +290,7 @@ mesh_map:
 ```
 
 `mesh_file` points to the map file. In the tutorials we set this parameter dynamically in the launch file [`mesh_navigation_tutorial_launch.py`](https://github.com/naturerobots/mesh_navigation_tutorials/blob/main/mesh_navigation_tutorials/launch/mesh_navigation_tutorial_launch.py).
-`mesh_part` points to the group of the HDF5 file that contains the layered mesh map.
+`mesh_part` points to the mesh of a scene description.
 Our `my_layered_mesh_map.h5` has only one mesh group, as you can see by inspecting the file using HDFCompass:
 
 ![HDFCompass](/media/hdfcompass1.png)
@@ -339,13 +343,15 @@ The following guide explains that: [Link](/tutorials/deliberation.md).
 
 ### Dynamic Reconfigure
 
-*Warning*: This is untested but should work. (Or should work eventually)  
+Most of the parameters can be changed at run time to conveniently fine-tune certain cost-layer's parameters. Call
 
-Most of the parameters can be changed at run time to fine tune certain cost-layer's parameters at runtime. Call
-
-```console
+```bash
 ros2 run rqt_reconfigure rqt_reconfigure
 ```
 
 An rqt window will open in which you can change parameters of different parts of the mesh navigation.
+
+
+
+
 

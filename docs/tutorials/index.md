@@ -1,39 +1,63 @@
-
 # Tutorials
 
-This documentation is under construction. It will contain both explanations for more applied users and for developers.
+!!! Info 
+    
+    This documentation is under construction. It will contain explanations for both applied users and developers. 
+
+Throughout the tutorials, code snippets are occasionally provided to demonstrate the described concepts. Before continuing, make sure you have installed the [MeshNav tutorials](https://github.com/naturerobots/mesh_navigation_tutorials).
+Follow the installation instructions provided in the repository’s top-level README file.
+
+You can test your installation by running:
+
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=tray
+```
+
+This command launches a simple world in Gazebo and opens an RViz window showing the mesh map of the environment.
+
+| Gazebo                               | RViz                             |
+| ------------------------------------ | -------------------------------- |
+| ![TrayGazebo](/media/tray_world.png) | ![TrayRViz](/media/tray_map.png) |
+
+In RViz, click **“Mesh Goal”** and draw an arrow somewhere on the map. The robot should start driving to the selected point.
+If this works, the installation was successful and you can proceed with the tutorials.
+
+---
 
 ## Applied Users
-explanations on how to start things (in more detail than the README.md)
-Link existing docs of mesh_navigation. e.g. wiki-page where all the implemented layers are explained.  
 
-Overview:
+This section explains how to get started with [MeshNav](https://github.com/naturerobots/mesh_navigation). It then introduces documentation on applying these concepts to real-world scenarios through map-based localization and deliberation. Finally, we present tools for handling mesh maps, primarily by cross-referencing existing approaches and workflows for mesh mapping and editing.
 
-1. [Mesh Mapping](/tutorials/mesh_mapping.md)
-2. [Cost Layers Generation](/tutorials/cost_layer_generation.md)
-3. [Localization](/tutorials/localization.md)
-4. [Mesh Navigation](/tutorials/mesh_navigation.md)
-5. [Deliberation](/tutorials/deliberation.md)
+### Getting Started with MeshNav
 
+1. [Mesh Navigation](./mesh_navigation.md)
+2. [Mesh Cost Layers](./mesh_cost_layers.md)
+3. [Planner & Controller](./planner_and_controller.md)
+4. [Virtual Worlds](./tutorial_worlds.md)
 
-Mesh Generation:
+### Sim-to-Real
 
-- TODO
+* [Map-based Localization](./localization.md)
+* [Deliberation](./deliberation.md)
 
-Mesh Editing:
+### Mesh Generation & Editing
 
-- [Flatten Floor](/tutorials/editing/flatten_surface.md)
-- [Align Mesh to Ground](/tutorials/editing/align_mesh_to_ground.md)
-- [Shrink Faces](/tutorials/editing/shrink_faces.md)
+* [Mesh Mapping](./gen_edit/mesh_mapping.md)
+* [Flatten Floor](./gen_edit/flatten_surface.md)
+* [Align Mesh to Ground](./gen_edit/align_mesh_to_ground.md)
+* [Shrink Faces](./gen_edit/shrink_faces.md)
 
+---
 
+## Developers
 
-## Mesh Navigation for Developer
-instructions how to change certain things for developing new things. Explain concepts in more detail.
+This section provides instructions on how to modify components and develop new features. Core concepts are explained in more detail to support extending the system.
 
-Writing Plugins:
+### Writing Plugins
 
-- [Own Costmap](/tutorials/plugins/own_cost_layer.md)
-- TODO
+* [Custom Cost Layer](/tutorials/plugins/own_cost_layer.md)
+* *More coming soon…*
 
+---
 
+Do you also want me to **standardize headings** (e.g., always plural “Developers” instead of “Developer”), or keep them exactly as you had them?
