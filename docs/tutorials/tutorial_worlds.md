@@ -8,6 +8,7 @@ This separation ensures both robustness testing under realistic conditions and e
 ## Simple Worlds
 
 Locations:
+
 - Maps: `mesh_navigation_tutorials/maps`
 - Worlds: `mesh_navigation_tutorials_sim/worlds`
 
