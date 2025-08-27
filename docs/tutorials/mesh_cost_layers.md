@@ -58,7 +58,7 @@ It removes points of a LiDAR scan that are close to the map. The remaining point
 
 !!! Warning
 
-    The following command required [RMCL](https://github.com/uos/rmcl) to be installed.
+    The following command requires [RMCL](https://github.com/uos/rmcl) to be installed.
 
 Enable this pre-segmentation by calling
 
