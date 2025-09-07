@@ -20,7 +20,19 @@ All these layers are described in [mesh navigation](https://github.com/naturerob
 
 ## Graph Layer System
 
-TODO
+The cost layers used by mesh navigation can be configured by the user to best fit the robot and its tasks.
+The configured cost layers are loaded by the `MeshMap` on startup and are stored in a dependency graph datastructure.
+This dependency graph is a directed graph with an edge between two layers *A* and *B* if the layer *A* uses *B* as an input.
+An example of a layer that uses another layer as an input is the *inflation layer*, which inflates obstacles in the map to keep the robot at a safe distance.
+
+Computing the inflation layer can take up to several seconds in larger real-world meshes, which is a problem if we add moving obstacles to the map using the *obstacle layer* because we need to recompute the inflation layer every time the obstacle layer is updated.
+Our graph-based approach allows us to split the inflation layer computation into static obstacles, which are computed once when mesh navigation initializes, and dynamic obstacles, which are continuously updated but only affect a small region of the map around the robot and can therefore be inflated very fast.
+
+The following image shows an example layer configuration with static obstacles detected by three layers and dynamic obstacles.
+The *AvgCombinationLayer* and *MaxCombinationLayer* merge their respective input layers by merging the lethal vertices and calculating the cost for each vertex as the average and maximum of their respective input layers.
+The MaxCombinationLayer at the bottom is the final layer used by the planning and control plugins.
+
+![Example Layer Dependency Graph](/media/mesh_map_layer_graph.drawio.png)
 
 ## Layer Overview
 
@@ -37,7 +49,7 @@ To start with why obstacle avoidance is important, we start with showing what ha
 
 
 ```bash
-ros2 launch mesh_navigation_tutorials world_name:=tray
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=tray
 ```
 
 Then:
