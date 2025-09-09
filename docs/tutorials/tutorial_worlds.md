@@ -20,7 +20,7 @@ All files are located in the following packages:
 The most simplistic environment for very simple test cases.
 
 | RViz | Gazebo |
-|:--:|:--:|
+|:-----:|:------:|
 | ![tray_map](/media/simple_envs/tray_map.png) | ![tray_sim](/media/simple_envs/tray_world.png) |
 
 
@@ -68,6 +68,16 @@ Physics building at Campus Westerberg, Osnabrück University.
 
 ![physics_campus_uos](/media/pluto_envs/physics_campus_uos_map.png)
 
+<div style="position: relative; padding-bottom: 56.3%; height: 0; overflow: hidden;" >
+    <iframe src="https://www.youtube.com/embed/tLDl9xIBrlw?si=4YUxG31nHOnnw3vt?autoplay=1&mute=1" 
+            title="YouTube Video" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+
 #### Botanical Garden Osnabrück
 
 | ID | Vertices  | Triangle | Dimensions: x[m], y[m], z[m] |
@@ -85,6 +95,16 @@ Physics building at Campus Westerberg, Osnabrück University.
 
 ![stone_quarry_brockum](/media/pluto_envs/stone_quarry_brockum_map.png) 
 
+<div style="position: relative; padding-bottom: 51.8%; height: 0; overflow: hidden;" >
+    <iframe src="https://www.youtube.com/embed/3sQ4CU4IExs?si=RwSsiBsToUVW284v?autoplay=1&mute=1" 
+            title="YouTube Video" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+
 #### Download
 
 While being in the source directory of this repository, download all Pluto maps by entering
@@ -99,7 +119,30 @@ or specific ones by calling
 git lfs pull --include="mesh_navigation_pluto*/**/physics_campus_uos*"
 ```
 
+### Ceres Maps
 
+#### Coppenrath Innovation Centre (CIC) Outdoors
 
+The [CIC](https://www.cic-os.de/) building contains tech companies and research facilities that focus on AI & Robotics. [Nature Robots](https://naturerobots.com/de/) is situated there as well as [DFKI](https://www.dfki.de/en/web/research/research-departments/cooperative-and-autonomous-systems) and [UOS](https://kbs.informatik.uos.de/).
 
+#### Agro-Technicum
 
+Building of [Osnabrück University of Applied Sciences](https://www.hs-osnabrueck.de/forschung/recherche/laboreinrichtungen-und-versuchsbetriebe/labor-fuer-intelligente-sensorsysteme/) and [Osnabotics](https://osnabotics.de).
+
+#### FH Aachen (MASKOR)
+
+The campus of FH Aachen digitalized from the [MASKOR](https://maskor.fh-aachen.de/) institute.
+
+#### Download
+
+While being in the source directory of this repository, download all Pluto maps by entering
+
+```bash
+git lfs pull --include="mesh_navigation_ceres*"
+```
+
+or specific ones by calling
+
+```bash
+git lfs pull --include="mesh_navigation_ceres*/**/cic_outdoor*"
+```
