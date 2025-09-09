@@ -21,13 +21,12 @@ This documentation is under construction. It will contain both explanations for 
 
 ## Table of Contents
 
-This documentation cosists of several examples, guides and conceptual explanations to give users a more thourough understanding of [mesh_navigation](https://github.com/naturerobots/mesh_navigation).
+This documentation cosists of several examples, guides and conceptual explanations to give users a more thorough understanding of [mesh_navigation](https://github.com/naturerobots/mesh_navigation).
 
 **Getting Started**
 
 - [Overview](/index.md)
 - [Installation](/installation.md)
-- [Run](/run.md)
 
 **Documentation**
 

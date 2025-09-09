@@ -21,7 +21,7 @@ The most simplistic environment for very simple test cases.
 
 | RViz | Gazebo |
 |:--:|:--:|
-| ![tray_map](/media/tray_map.png) | ![tray_sim](/media/tray_world.png) |
+| ![tray_map](/media/simple_envs/tray_map.png) | ![tray_sim](/media/simple_envs/tray_world.png) |
 
 
 ### Floor Is Lava
@@ -30,7 +30,7 @@ A more sophisticated environments where the robot could fall down a bridge (into
 
 | RViz | Gazebo |
 |:--:|:--:|
-| ![floor_is_lava](/media/floor_is_lava_map.png) | ![floor_is_lava_sim](/media/floor_is_lava_world.png) |
+| ![floor_is_lava](/media/simple_envs/floor_is_lava_map.png) | ![floor_is_lava_sim](/media/simple_envs/floor_is_lava_world.png) |
 
 ### Parking Garage
 
@@ -38,7 +38,7 @@ A simple multi-story parking garage, demonstrating how mesh navigation enables e
 
 | RViz | Gazebo |
 |:--:|:--:|
-| ![parking_garage_map](/media/parking_garage_map.png) | ![parking_garage_sim](/media/parking_garage_world.png) |
+| ![parking_garage_map](/media/simple_envs/parking_garage_map.png) | ![parking_garage_sim](/media/simple_envs/parking_garage_world.png) |
 
 ### Download
 
@@ -66,7 +66,7 @@ Physics building at Campus Westerberg, Osnabrück University.
 |:-----|:-----:|:-----:|:-----:|
 | `physics_campus_uos` | 719 080  | 1 617 772 | 166.02 * 83.61 * 26.33 |
 
-![physics_campus_uos](/media/physics_campus_uos_map.png)
+![physics_campus_uos](/media/pluto_envs/physics_campus_uos_map.png)
 
 #### Botanical Garden Osnabrück
 
@@ -74,7 +74,7 @@ Physics building at Campus Westerberg, Osnabrück University.
 |:-----|:-----:|:-----:|:-----:|
 | `botanical_garden_osnabrueck` | 714 760  | 1 430 188 | 39.05 * 49.25 * 6.67 |
 
-![botanical_garden_osnabrueck](/media/botanical_garden_osnabrueck_map.png) 
+![botanical_garden_osnabrueck](/media/pluto_envs/botanical_garden_osnabrueck_map.png) 
 
 
 #### Stone Quarry Brockum
@@ -83,7 +83,7 @@ Physics building at Campus Westerberg, Osnabrück University.
 |:-----|:-----:|:-----:|:-----:|
 | `stone_quarry_brockum` | 992 879  | 1 904 178 | 100.58 * 100.58 * 23.94 |
 
-![stone_quarry_brockum](/media/stone_quarry_brockum_map.png) 
+![stone_quarry_brockum](/media/pluto_envs/stone_quarry_brockum_map.png) 
 
 #### Download
 

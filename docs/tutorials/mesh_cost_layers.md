@@ -1,42 +1,29 @@
 # Cost Layer Generation
 
-- Input: (Optimized) Triangle Mesh
-- Output: Cost Layers
-
-Cost layers are used inside of mesh navigation to assign parts of the mesh different properties that can be considered for path planning and local planning. Such cost layers can be used:
+Cost layers are used inside of mesh navigation to assign parts of the mesh several properties that can be considered for path planning and local planning. Such cost layers can be used:
 
 - traversibility properties such as roughness, friction, etc.
 - lethal zones: such as borders of cliffs
 - prohibition areas where the robot should not drive because of certain safety regulations
 - obstacle layers: recording low-latency obstacle updates which can be used to avoid obstacles either in the planners or in the controllers
 
-Some useful cost layers are already implemented such as
+## Static Cost Layers
 
-- roughness
-- height difference
-- border
+Mesh Navigation provides a collection of layers that pre-compute static traversibility costs on the mesh surface. Each layer takes different geometric/semantic properties into account:
 
-All these layers are described in [mesh navigation](https://github.com/naturerobots/mesh_navigation). In addition, [mesh navigation](https://github.com/naturerobots/mesh_navigation) provides simple interfaces to implement cost layers as plugins which is described here: [Link](/tutorials/plugins/own_cost_layer.md).
+| Layer               | Plugin Type Specifier         | Description of Cost Computation          | Example Image                                                                           |
+| ------------------- | ----------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------- |
+| **HeightDiffLayer** | `mesh_layers/HeightDiffLayer` | local radius based height differences    | ![HeightDiffLayer](/media/costlayers/height_diff.jpg?raw=true "Height Diff Layer") |
+| **RoughnessLayer**  | `mesh_layers/RoughnessLayer`  | local radius based normal fluctuation    | ![RoughnessLayer](/media/costlayers/roughness.jpg?raw=true "Roughness Layer")      |
+| **SteepnessLayer**  | `mesh_layers/SteepnessLayer`  | arccos of the normal's z coordinate      | ![SteepnessLayer](/media/costlayers/steepness.jpg?raw=true "Steepness Layer")      |
+| **RidgeLayer**      | `mesh_layer/RidgeLayer`       | local radius based distance along normal | ![RidgeLayer](/media/costlayers/ridge.jpg?raw=true "RidgeLayer")                   |
+| **ClearanceLayer**  | `mesh_layers/ClearanceLayer`  | comparison of robot height and clearance along each vertex normal | ![ClearanceLayer](/media/costlayers/clearance.jpg?raw=true "Clearance Layer") |
+| **InflationLayer**  | `mesh_layers/InflationLayer`  | by distance to a lethal vertex           | ![InflationLayer](/media/costlayers/inflation.jpg?raw=true "Inflation Layer")      |
+| **BorderLayer** | `mesh_layers/BorderLayer` | give vertices close to the border a certain cost | ![BorderLayer](/media/costlayers/border.png?raw=true "Border Layer")   |
 
-## Graph Layer System
 
-The cost layers used by mesh navigation can be configured by the user to best fit the robot and its tasks.
-The configured cost layers are loaded by the `MeshMap` on startup and are stored in a dependency graph datastructure.
-This dependency graph is a directed graph with an edge between two layers *A* and *B* if the layer *A* uses *B* as an input.
-An example of a layer that uses another layer as an input is the *inflation layer*, which inflates obstacles in the map to keep the robot at a safe distance.
+## Dynamic Layers
 
-Computing the inflation layer can take up to several seconds in larger real-world meshes, which is a problem if we add moving obstacles to the map using the *obstacle layer* because we need to recompute the inflation layer every time the obstacle layer is updated.
-Our graph-based approach allows us to split the inflation layer computation into static obstacles, which are computed once when mesh navigation initializes, and dynamic obstacles, which are continuously updated but only affect a small region of the map around the robot and can therefore be inflated very fast.
-
-The following image shows an example layer configuration with static obstacles detected by three layers and dynamic obstacles.
-The *AvgCombinationLayer* and *MaxCombinationLayer* merge their respective input layers by merging the lethal vertices and calculating the cost for each vertex as the average and maximum of their respective input layers.
-The MaxCombinationLayer at the bottom is the final layer used by the planning and control plugins.
-
-![Example Layer Dependency Graph](/media/mesh_map_layer_graph.drawio.png)
-
-## Layer Overview
-
-TODO
 
 ### Obstacle Layer
 
@@ -59,7 +46,15 @@ Then:
 
 You will see the robot crashing into the ball.
 
-![type:video](/media/meshnav_football1.webm)
+<div style="position: relative; padding-bottom: 42.8%; height: 0; overflow: hidden;" >
+    <iframe src="https://www.youtube.com/embed/NXEzyZaFRME?si=qbERyLSxpiQHycx9?autoplay=1&mute=1" 
+            title="YouTube Video" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
 
 Unless you want to create a soccer robot, this is usually not a wanted behavior. Especially in reality, when it's not a ball but a human being.
 Fortunately, the obstacle layer can help us here.
@@ -80,12 +75,40 @@ ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_
 
 After repeating the steps 1. and 2. from above, the ball is detected as dynamic obstacle, projected onto the obstacle, and finally considered during planning.
 
-![type:video](/media/meshnav_football2.webm)
+<div style="position: relative; padding-bottom: 42.8%; height: 0; overflow: hidden;" >
+    <iframe src="https://www.youtube.com/embed/fWU6_IdAoc0?si=Nm4IDQGFZhh0lFFf?autoplay=1&mute=1" 
+            title="YouTube Video" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
 
-#### Parameters
-
-| Name | Type | Description |
+| Parameter | Type | Description |
 |:----|:----|:------|
 | `robot_height` | Float | Height of the robot (in meters) considered for projection. You can use this to let small robots drive below tables. |
 | `max_obstacle_dist` | Float | Obstacles points farther away then this parameter's value are ignored. |
 | `topic` | String | Input obstacle points topic of message type `sensor_msgs/PointCloud2` |
+
+## Graph Layer System
+
+The planner operates on a single cost layer that can have combined costs from other cost layers. Using the Graph Layer system, users can configure which cost layers contribute to it and with what weighting factors.
+
+On startup, all configured cost layers are loaded by the `MeshMap` and are stored in a dependency graph data structure.
+This dependency graph is a directed graph with an edge between two layers *A* and *B* if the layer *A* uses *B* as an input.
+An example of a layer that uses another layer as an input is the *inflation layer*, which inflates obstacles in the map to keep the robot at a safe distance.
+
+Computing the inflation layer can take up to several seconds in larger real-world meshes, which is a problem if we add moving obstacles to the map using the *obstacle layer* because we need to recompute the inflation layer every time the obstacle layer is updated.
+Our graph-based approach allows us to split the inflation layer computation into static obstacles, which are computed once when mesh navigation initializes, and dynamic obstacles, which are continuously updated but only affect a small region of the map around the robot and can therefore be inflated very fast.
+
+The following image shows an example layer configuration with static obstacles detected by three layers and dynamic obstacles.
+The *AvgCombinationLayer* and *MaxCombinationLayer* merge their respective input layers by merging the lethal vertices and calculating the cost for each vertex as the average and maximum of their respective input layers.
+The MaxCombinationLayer at the bottom is the final layer used by the planning and control plugins.
+
+![Example Layer Dependency Graph](/media/costlayers/mesh_map_layer_graph.drawio.png)
+
+### Combination Layers
+
+
+

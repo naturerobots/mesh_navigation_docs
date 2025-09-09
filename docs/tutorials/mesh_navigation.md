@@ -1,20 +1,45 @@
 # Mesh Navigation
 
+This tutorials aim to help quickly giving a feeling how to setup mesh_navigation properly and how to fine-tune several parameters. 
 
-Inputs:
+!!! Important
+    You need [`mesh_navigation_tutorials`](https://github.com/naturerobots/mesh_navigation_tutorials) installed before continuing.
 
-- Mesh Geometry
-- Localization
-- Target Pose
+Start the first example by calling:
 
-Output: Control Signals
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=floor_is_lava
+```
+
+You can change `floor_is_lava` by any world name that is available with this repository (see all by calling launch file with `--show-args`). Those are: 
+
+| Name | World | Default Map | Description |
+|------|-------|-----|-------------|
+| tray | ![tray_world](/media/simple_envs/tray_world.png) | ![tray_map](/media/simple_envs/tray_map.png)| This world is a rectangular area with a wall around the perimeter. |
+| floor_is_lava | ![floor_is_lava_world](/media/simple_envs/floor_is_lava_world.png) | ![floor_is_lava_map](/media/simple_envs/floor_is_lava_map.png)| This world contains a square area with with two pits and a connecting section at a slightly higher elevation.
+| parking_garage | ![parking_garage_world](/media/simple_envs/parking_garage_world.png) | ![parking_garage_map](/media/simple_envs/parking_garage_map.png)| This world represents a parking garage with multiple floors connected by ramps. |
+
+!!! Info
+
+    See [Virtual Worlds](/tutorials/tutorial_worlds.md) for more information about those and more realistic maps that are available within the tutorials.
+
+An RViz window opens showing a mesh map which is used by MeshNav for path planning and control.
+In order to make the robot move, find the "Mesh Goal" tool at the top.
+With it, you can click on any part of the mesh.
+Click and hold to set a goal pose.
 
 ## Parameters
-
 
 !!! note
 
     Note: Open [this](https://github.com/naturerobots/mesh_navigation_tutorials/blob/main/mesh_navigation_tutorials/config/mbf_mesh_nav.yaml) to access the most recent config file.
+
+A complete parameter file of mesh_navigation can look like this:
+
+<details>
+<summary>
+Parameter File
+</summary>
 
 ```yaml
 move_base_flex:
@@ -150,6 +175,9 @@ move_base_flex:
       # debug/development function: enable this to log the update times of changing layers to a csv file
       enable_layer_timer: false
 ```
+</details>
+
+The following sections give a brief explanation what those parameter are good for. 
 
 ### General Parameters (MBF)
 
@@ -261,85 +289,17 @@ mesh_map:
   mesh_part: '/' # reference to mesh
 
   # list of available layers
-  layers: ['border', 'height_diff', 'roughness', 'inflation']
-
-  height_diff:
-    type: 'mesh_layers/HeightDiffLayer'
-    factor: 1.0
-    threshold: 0.8
-
-  border:
-    type: 'mesh_layers/BorderLayer'
-    factor: 1.0
-    border_cost: 1.0
-    threshold: 0.2
-
-  roughness:
-    type: 'mesh_layers/RoughnessLayer'
-    factor: 1.0
-    threshold: 0.8
-
-  inflation:
-    type: 'mesh_layers/InflationLayer'
-    factor: 1.0
-    inflation_radius: 0.4
-    inscribed_radius: 0.2
-    lethal_value: 1.0
-    inscribed_value: 0.8
-    repulsive_field: false
+  layers:
+    - border
+    - height_diff
+    - roughness
+    - static_combination
+    - static_inflation
+    - obstacle
+    - obstacle_inflation
+    - final
+  [...]
 ```
-
-`mesh_file` points to the map file. In the tutorials we set this parameter dynamically in the launch file [`mesh_navigation_tutorials_launch.py`](https://github.com/naturerobots/mesh_navigation_tutorials/blob/main/mesh_navigation_tutorials/launch/mesh_navigation_tutorials_launch.py).
-`mesh_part` points to the mesh of a scene description.
-Our `my_layered_mesh_map.h5` has only one mesh group, as you can see by inspecting the file using HDFCompass:
-
-![HDFCompass](/media/hdfcompass1.png)
-
-(raw is not a mesh group).
-
-You can use this feature to store many layered meshes in one file. This can become useful, for example, for large-scale environments where you have to start to split your map into chunks.
-
-`layers` is a list of all the used layer keys. This parameter is mainly existing because in ROS 2 it is harder to get all the keys of a yaml map.
-This list also defines the order a cost-layer is computed.
-This matters e.g. for the inflation layer as it inflates all the layers that a loaded before, but not after.
-Below `layers` is a list of cost-layer parameter maps.
-You can find an explanation on the specific parameters for each cost layer in their documentation.
-
-
-
-## Tutorials
-
-To quickly get a feeling what these parameters are doing and how changing them influences the robots behavior, we recommend to start the examples from the [`mesh_navigation_tutorials`](https://github.com/naturerobots/mesh_navigation_tutorials).
-
-
-```bash
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=floor_is_lava
-```
-
-You change `floor_is_lava` by any world name that is available with this repository (see all by calling launch file with `--show-args`). Those are: 
-
-| Name | World | Default Map | Description |
-|------|-------|-----|-------------|
-| tray | ![tray_world](/media/tray_world.png) | ![tray_map](/media/tray_map.png)| This world is a rectangular area with a wall around the perimeter. |
-| floor_is_lava | ![floor_is_lava_world](/media/floor_is_lava_world.png) | ![floor_is_lava_map](/media/floor_is_lava_map.png)| This world contains a square area with with two pits and a connecting section at a slightly higher elevation.
-| parking_garage | ![parking_garage_world](/media/parking_garage_world.png) | ![parking_garage_map](/media/parking_garage_map.png)| This world represents a parking garage with multiple floors connected by ramps. |
-
-When running a simulated world, you can save some resources by not running the gazebo GUI: Add the `start_gazebo_gui:=False` launch argument.
-
-A RViz window opens showing a mesh map.
-This map is being used for navigation.
-
-In order to make the robot move, find the "Mesh Goal" tool at the top.
-With it, you can click on any part of the mesh.
-Click and hold to set a goal pose.
-The MbfGoalActions rviz plugin contains a very tiny state machine that performs the following actions:
-* subscribe to that goal pose
-* get a path to that pose
-* execute that path
-
-For your own application you may want to integrate mesh navigation into your own deliberation (state machine / behavior tree).
-The following guide explains that: [Link](/tutorials/deliberation.md).
-
 
 ### Dynamic Reconfigure
 
@@ -350,8 +310,4 @@ ros2 run rqt_reconfigure rqt_reconfigure
 ```
 
 An rqt window will open in which you can change parameters of different parts of the mesh navigation.
-
-
-
-
 

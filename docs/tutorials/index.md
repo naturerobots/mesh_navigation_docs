@@ -17,7 +17,7 @@ This command launches a simple world in Gazebo and opens an RViz window showing 
 
 | Gazebo                               | RViz                             |
 | ------------------------------------ | -------------------------------- |
-| ![TrayGazebo](/media/tray_world.png) | ![TrayRViz](/media/tray_map.png) |
+| ![TrayGazebo](/media/simple_envs/tray_world.png) | ![TrayRViz](/media/simple_envs/tray_map.png) |
 
 In RViz, click **“Mesh Goal”** and draw an arrow somewhere on the map. The robot should start driving to the selected point.
 If this works, the installation was successful and you can proceed with the tutorials.
