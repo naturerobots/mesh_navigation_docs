@@ -23,6 +23,9 @@ The most simplistic environment for very simple test cases.
 |:-----:|:------:|
 | ![tray_map](/media/simple_envs/tray_map.png) | ![tray_sim](/media/simple_envs/tray_world.png) |
 
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=tray
+```
 
 ### Floor Is Lava
 
@@ -32,6 +35,10 @@ A more sophisticated environments where the robot could fall down a bridge (into
 |:--:|:--:|
 | ![floor_is_lava](/media/simple_envs/floor_is_lava_map.png) | ![floor_is_lava_sim](/media/simple_envs/floor_is_lava_world.png) |
 
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=floor_is_lava
+```
+
 ### Parking Garage
 
 A simple multi-story parking garage, demonstrating how mesh navigation enables efficient planning across different floors.
@@ -39,6 +46,10 @@ A simple multi-story parking garage, demonstrating how mesh navigation enables e
 | RViz | Gazebo |
 |:--:|:--:|
 | ![parking_garage_map](/media/simple_envs/parking_garage_map.png) | ![parking_garage_sim](/media/simple_envs/parking_garage_world.png) |
+
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=parking_garage
+```
 
 ### Download
 
@@ -62,9 +73,9 @@ All files are located in the following packages:
 
 Physics building at Campus Westerberg, Osnabrück University.
 
-| ID | Vertices  | Triangle | Dimensions: x[m], y[m], z[m] |
-|:-----|:-----:|:-----:|:-----:|
-| `physics_campus_uos` | 719 080  | 1 617 772 | 166.02 * 83.61 * 26.33 |
+| ID | Vertices  | Triangles | Dimensions: x[m], y[m], z[m] | File Size |
+|:-----|:-----:|:-----:|:-----:|:-----:|
+| `physics_campus_uos` | 813 674  | 1 804 965 | 166.02 * 83.61 * 26.33 | 35M |
 
 ![physics_campus_uos](/media/pluto_envs/physics_campus_uos_map.png)
 
@@ -78,20 +89,27 @@ Physics building at Campus Westerberg, Osnabrück University.
     </iframe>
 </div>
 
+```bash
+ros2 launch mesh_navigation_pluto mesh_navigation_pluto_launch.py world_name:=physics_campus_uos
+```
+
 #### Botanical Garden Osnabrück
 
-| ID | Vertices  | Triangle | Dimensions: x[m], y[m], z[m] |
-|:-----|:-----:|:-----:|:-----:|
-| `botanical_garden_osnabrueck` | 714 760  | 1 430 188 | 39.05 * 49.25 * 6.67 |
+| ID | Vertices  | Triangles | Dimensions: x[m], y[m], z[m] | File Size |
+|:-----|:-----:|:-----:|:-----:|:----:|
+| `botanical_garden_osnabrueck` | 711 417  | 1 404 396 | 39.05 * 49.25 * 6.67 | 34M |
 
 ![botanical_garden_osnabrueck](/media/pluto_envs/botanical_garden_osnabrueck_map.png) 
 
+```bash
+ros2 launch mesh_navigation_pluto mesh_navigation_pluto_launch.py world_name:=botanical_garden_osnabrueck
+```
 
 #### Stone Quarry Brockum
 
-| ID | Vertices  | Triangle | Dimensions: x[m], y[m], z[m] |
-|:-----|:-----:|:-----:|:-----:|
-| `stone_quarry_brockum` | 992 879  | 1 904 178 | 100.58 * 100.58 * 23.94 |
+| ID | Vertices  | Triangles | Dimensions: x[m], y[m], z[m] | File Size |
+|:-----|:-----:|:-----:|:-----:|:----:|
+| `stone_quarry_brockum` | 927 102  | 1 881 428 | 100.58 * 100.58 * 23.94 | 37M |
 
 ![stone_quarry_brockum](/media/pluto_envs/stone_quarry_brockum_map.png) 
 
@@ -104,6 +122,10 @@ Physics building at Campus Westerberg, Osnabrück University.
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
     </iframe>
 </div>
+
+```bash
+ros2 launch mesh_navigation_pluto mesh_navigation_pluto_launch.py world_name:=stone_quarry_brockum
+```
 
 #### Download
 
@@ -125,25 +147,49 @@ git lfs pull --include="mesh_navigation_pluto*/**/physics_campus_uos*"
 
 The [CIC](https://www.cic-os.de/) building contains tech companies and research facilities that focus on AI & Robotics. [Nature Robots](https://naturerobots.com/de/) is situated there as well as [DFKI](https://www.dfki.de/en/web/research/research-departments/cooperative-and-autonomous-systems) and [UOS](https://kbs.informatik.uos.de/).
 
+| ID | Vertices  | Triangles | Dimensions: x[m], y[m], z[m] | File Size |
+|:-----|:-----:|:-----:|:-----:|:----:|
+| `cic_outdoor` | 1 067 684 | 1 967 419 | 284.06 * 276.64 * 26.3 | 57M |
+
 | RViz | Gazebo |
 |:--:|:--:|
 | ![cic_outdoor_map](/media/ceres_envs/cic_outdoor_map.png) | ![cic_outdoor_sim](/media/ceres_envs/cic_outdoor_world.png) |
+
+```bash
+ros2 launch mesh_navigation_ceres mesh_navigation_ceres_launch.py world_name:=cic_outdoor
+```
 
 #### Agro-Technicum
 
 Building of [Osnabrück University of Applied Sciences](https://www.hs-osnabrueck.de/forschung/recherche/laboreinrichtungen-und-versuchsbetriebe/labor-fuer-intelligente-sensorsysteme/) and [Osnabotics](https://osnabotics.de).
 
+| ID | Vertices  | Triangles | Dimensions: x[m], y[m], z[m] | File Size |
+|:-----|:-----:|:-----:|:-----:|:----:|
+| `agrotechnicum` | 402 076 | 681 761 | 129.1 * 143.25 * 16.1 | 15M |
+
 | RViz | Gazebo |
 |:--:|:--:|
 | ![agrotechnicum_map](/media/ceres_envs/agrotechnicum_map.png) | ![agrotechnicum_sim](/media/ceres_envs/agrotechnicum_world.png) |
+
+```bash
+ros2 launch mesh_navigation_ceres mesh_navigation_ceres_launch.py world_name:=agrotechnicum
+```
 
 #### FH Aachen (MASKOR)
 
 The campus of FH Aachen digitalized from the [MASKOR](https://maskor.fh-aachen.de/) institute.
 
+| ID | Vertices  | Triangles | Dimensions: x[m], y[m], z[m] | File Size |
+|:-----|:-----:|:-----:|:-----:|:----:|
+| `fh_aachen` | 1 191 523 | 2 350 458 | 245.97 * 370.9 * 39.43 | 48M |
+
 | RViz | Gazebo |
 |:--:|:--:|
 | ![fh_aachen_map](/media/ceres_envs/fh_aachen_map.png) | ![fh_aachen_sim](/media/ceres_envs/fh_aachen_world.png) |
+
+```bash
+ros2 launch mesh_navigation_ceres mesh_navigation_ceres_launch.py world_name:=fh_aachen
+```
 
 #### Download
 
