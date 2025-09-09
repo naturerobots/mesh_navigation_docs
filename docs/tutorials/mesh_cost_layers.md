@@ -1,6 +1,6 @@
 # Cost Layer Generation
 
-Cost layers are used inside of mesh navigation to assign parts of the mesh several properties that can be considered for path planning and local planning. Such cost layers can be used:
+Cost layers are used inside of mesh navigation to assign parts of the mesh several properties that can be considered for path planning and local planning. For example
 
 - traversibility properties such as roughness, friction, etc.
 - lethal zones: such as borders of cliffs
