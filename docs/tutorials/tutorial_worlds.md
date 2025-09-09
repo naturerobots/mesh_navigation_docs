@@ -125,13 +125,25 @@ git lfs pull --include="mesh_navigation_pluto*/**/physics_campus_uos*"
 
 The [CIC](https://www.cic-os.de/) building contains tech companies and research facilities that focus on AI & Robotics. [Nature Robots](https://naturerobots.com/de/) is situated there as well as [DFKI](https://www.dfki.de/en/web/research/research-departments/cooperative-and-autonomous-systems) and [UOS](https://kbs.informatik.uos.de/).
 
+| RViz | Gazebo |
+|:--:|:--:|
+| ![cic_outdoor_map](/media/ceres_envs/cic_outdoor_map.png) | ![cic_outdoor_sim](/media/ceres_envs/cic_outdoor_world.png) |
+
 #### Agro-Technicum
 
 Building of [Osnabrück University of Applied Sciences](https://www.hs-osnabrueck.de/forschung/recherche/laboreinrichtungen-und-versuchsbetriebe/labor-fuer-intelligente-sensorsysteme/) and [Osnabotics](https://osnabotics.de).
 
+| RViz | Gazebo |
+|:--:|:--:|
+| ![agrotechnicum_map](/media/ceres_envs/agrotechnicum_map.png) | ![agrotechnicum_sim](/media/ceres_envs/agrotechnicum_world.png) |
+
 #### FH Aachen (MASKOR)
 
 The campus of FH Aachen digitalized from the [MASKOR](https://maskor.fh-aachen.de/) institute.
+
+| RViz | Gazebo |
+|:--:|:--:|
+| ![fh_aachen_map](/media/ceres_envs/fh_aachen_map.png) | ![fh_aachen_sim](/media/ceres_envs/fh_aachen_world.png) |
 
 #### Download
 
