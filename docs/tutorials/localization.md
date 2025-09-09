@@ -23,7 +23,7 @@ Some nodes of the [RMCL](https://github.com/uos/rmcl) project are directly integ
 You can activate it's MICP-L pose tracking method  by setting the launch argument `localization` to `rmcl_micpl`.
 
 ```bash
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=tray localization:=rmcl_micpl
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=tray localization:=rmcl_micpl
 ```
 
 Whats happening internally: The localization that was previously given by the Gazebo simulation is now replaced by MICP-L, a method that continuously registers the LiDAR scans to the mesh map.

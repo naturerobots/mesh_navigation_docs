@@ -10,7 +10,7 @@ Follow the installation instructions provided in the repository’s top-level RE
 You can test your installation by running:
 
 ```bash
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=tray
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=tray
 ```
 
 This command launches a simple world in Gazebo and opens an RViz window showing the mesh map of the environment.

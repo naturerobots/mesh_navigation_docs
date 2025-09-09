@@ -49,7 +49,7 @@ To start with why obstacle avoidance is important, we start with showing what ha
 
 
 ```bash
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=tray
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=tray
 ```
 
 Then:
@@ -75,7 +75,7 @@ It removes points of a LiDAR scan that are close to the map. The remaining point
 Enable this pre-segmentation by calling
 
 ```bash
-ros2 launch mesh_navigation_tutorials world_name:=tray obtacle_segmentation:=rmcl_seg
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=tray obtacle_segmentation:=rmcl_seg
 ```
 
 After repeating the steps 1. and 2. from above, the ball is detected as dynamic obstacle, projected onto the obstacle, and finally considered during planning.

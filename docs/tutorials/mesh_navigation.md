@@ -289,7 +289,7 @@ mesh_map:
     repulsive_field: false
 ```
 
-`mesh_file` points to the map file. In the tutorials we set this parameter dynamically in the launch file [`mesh_navigation_tutorial_launch.py`](https://github.com/naturerobots/mesh_navigation_tutorials/blob/main/mesh_navigation_tutorials/launch/mesh_navigation_tutorial_launch.py).
+`mesh_file` points to the map file. In the tutorials we set this parameter dynamically in the launch file [`mesh_navigation_tutorials_launch.py`](https://github.com/naturerobots/mesh_navigation_tutorials/blob/main/mesh_navigation_tutorials/launch/mesh_navigation_tutorials_launch.py).
 `mesh_part` points to the mesh of a scene description.
 Our `my_layered_mesh_map.h5` has only one mesh group, as you can see by inspecting the file using HDFCompass:
 
@@ -312,8 +312,8 @@ You can find an explanation on the specific parameters for each cost layer in th
 To quickly get a feeling what these parameters are doing and how changing them influences the robots behavior, we recommend to start the examples from the [`mesh_navigation_tutorials`](https://github.com/naturerobots/mesh_navigation_tutorials).
 
 
-```console
-ros2 launch mesh_navigation_tutorials mesh_navigation_tutorial_launch.py world_name:=floor_is_lava
+```bash
+ros2 launch mesh_navigation_tutorials mesh_navigation_tutorials_launch.py world_name:=floor_is_lava
 ```
 
 You change `floor_is_lava` by any world name that is available with this repository (see all by calling launch file with `--show-args`). Those are: 
