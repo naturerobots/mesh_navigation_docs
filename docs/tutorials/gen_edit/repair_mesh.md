@@ -25,13 +25,17 @@ After applying each filter, MeshLab gives a feedback how many elements were remo
 
 ## (Rare) Repair Non-Manifold Meshes
 
-In some occasions non-manifoldness of the mesh leads to unexpected behavior in any algorithm that needs to travers over the surface. Meshlab has a function
+In some occasions non-manifoldness of the mesh leads to unexpected behavior in any algorithm that needs to traverse over the surface. Meshlab has a function that removes faces that belong to a non manifold edge.
 
 ```txt
 Filters -> Cleaning and Repairing -> Repair non Manifold Edges by Removing Faces
 ```
 
+Do this until MeshLab's output prints that no face is removed anymore. After that select the filter
 
+```txt
+Filters -> Cleaning and Repairing -> Repair non Manifold Vertices by splitting
+```
 
-
+and enter `0.5` as vertex displacement ratio to avoid creating new duplicated vertices. Repeat that until MeshLab prints it has done no changes.
 
