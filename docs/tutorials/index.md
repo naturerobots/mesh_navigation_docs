@@ -43,6 +43,7 @@ This section explains how to get started with [MeshNav](https://github.com/natur
 ### Mesh Generation & Editing
 
 * [Mesh Mapping](./gen_edit/mesh_mapping.md)
+* [Repair Meshes](./gen_edit/repair_mesh.md)
 * [Flatten Floor](./gen_edit/flatten_surface.md)
 * [Align Mesh to Ground](./gen_edit/align_mesh_to_ground.md)
 * [Shrink Faces](./gen_edit/shrink_faces.md)

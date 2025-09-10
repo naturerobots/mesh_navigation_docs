@@ -29,14 +29,6 @@ markdown_extensions:
   - admonition
   - attr_list
 
-plugins:
-  - mkdocs-video:
-      is_video: True
-      video_muted: True
-      video_controls: True
-      css_style:
-        width: "100%"
-
 validation:
   links:
     absolute_links: relative_to_docs
@@ -61,6 +53,7 @@ nav:
       - Deliberation: tutorials/deliberation.md
     - Mesh Generation & Editing:
       - Mesh Mapping: tutorials/gen_edit/mesh_mapping.md
+      - Repair Meshes: tutorials/gen_edit/repair_mesh.md
       - Flatten Surfaces: tutorials/gen_edit/flatten_surface.md
       - Align Mesh to Ground: tutorials/gen_edit/align_mesh_to_ground.md
       - Shrink Faces: tutorials/gen_edit/shrink_faces.md
