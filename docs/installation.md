@@ -34,7 +34,7 @@ rosdep install --from-paths . --ignore-src -r -y
 Go to workspace root `cd $YOUR_ROS_WS` and run
 
 ```bash
-colcon build --packages-up-to mesh_navigation_tutorials
+colcon build --packages-up-to mesh_navigation
 ```
 
 ### Validate Build
