@@ -21,7 +21,7 @@ For this guide, we reduce the choice to three potential data structures: point c
 In the following guide, we create simple but realistic examples to show how mapping is done using those three representations.
 We start by creating the following world which resembles a cross-section of a hill next to a valley.
 
-![Alps](/media/alps.png)
+![Alps](/media/alps/alps.png)
 
 We call this world "Alps-world". Now we make a little mind game for finding a memory-friendly data structure: Represent the surface by 7 primitives.
 A primitive of a 
@@ -34,7 +34,7 @@ A primitive of a
 Representing the Alps-world's surface by a point cloud using 7 primitives, i.e. points, could result in the following map:
 
 
-![AlpsPcd](/media/alps_pcd.png)
+![AlpsPcd](/media/alps/alps_pcd.png)
 
 
 This representation is the most raw form of building a map from range sensor data, e.g. LiDAR, as every point can be an unchanged range measurement.
@@ -45,14 +45,14 @@ For example there can be another world represented by the same point cloud map:
 
 | Alps 1 | Alps 2 |
 |:--:|:--:|
-| ![AlpsPcd](/media/alps_pcd.png) | ![AlpsPcd](/media/alps_pcd_2.png) |
+| ![AlpsPcd](/media/alps/alps_pcd.png) | ![AlpsPcd](/media/alps/alps_pcd_2.png) |
 
 
 ### Voxel-based
 
 Representing the Alps world's surface by a voxel-based map using 7 primitives, i.e. squares, could result in the following map:
 
-![AlpsVoxel](/media/alps_voxel.png)
+![AlpsVoxel](/media/alps/alps_voxel.png)
 
 In contrast to the point cloud map, there are no gaps anymore; this representation describes the surface completely.
 It also means we cannot generate many other worlds anymore that would result in the same map.
@@ -67,7 +67,7 @@ If we are not careful enough, this would be interpolated by a 10cm voxel.
 
 Representing the Alps world's surface by a triangle mesh using 7 primitives, i.e. lines, could result in the following map:
 
-![AlpsMesh](/media/alps_mesh.png)
+![AlpsMesh](/media/alps/alps_mesh.png)
 
 (Red: Vertices, Black: Triangles)
 
