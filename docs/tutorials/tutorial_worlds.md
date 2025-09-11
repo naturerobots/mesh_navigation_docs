@@ -191,6 +191,17 @@ The campus of FH Aachen digitalized from the [MASKOR](https://maskor.fh-aachen.d
 ros2 launch mesh_navigation_ceres mesh_navigation_ceres_launch.py world_name:=fh_aachen
 ```
 
+<div style="position: relative; padding-bottom: 56.3%; height: 0; overflow: hidden;" >
+    <iframe src="https://www.youtube.com/embed/30jOQoHEhXc?si=Yy-n4aCRLzCblUBn?autoplay=1&mute=1" 
+            title="YouTube Video" 
+            frameborder="0" 
+            allow="autoplay; encrypted-media" 
+            allowfullscreen 
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+    </iframe>
+</div>
+
+
 #### Download
 
 While being in the source directory of this repository, download all Pluto maps by entering
