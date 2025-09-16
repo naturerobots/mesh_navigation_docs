@@ -59,6 +59,3 @@ This section provides instructions on how to modify components and develop new f
 * [Custom Cost Layer](/tutorials/plugins/own_cost_layer.md)
 * *More coming soon…*
 
----
-
-Do you also want me to **standardize headings** (e.g., always plural “Developers” instead of “Developer”), or keep them exactly as you had them?

@@ -108,7 +108,3 @@ The MaxCombinationLayer at the bottom is the final layer used by the planning an
 
 ![Example Layer Dependency Graph](/media/costlayers/mesh_map_layer_graph.drawio.png)
 
-### Combination Layers
-
-
-
