@@ -17,9 +17,7 @@ The Dijkstra Planner implements the classic [Dijkstra's algorithm](https://en.wi
 
 This planner is well-suited for applications where simplicity, robustness, and deterministic behavior are desired, but it is limited to edge-based paths rather than continuous trajectories over the surface.
 
-
-
-### CVP
+### Continuous Vector Field Planner
 
 The Continuous Vector Field Planner (CVP) extends beyond edge-based search by planning directly over the surface of the mesh instead of its connectivity graph.
 CVP uses a wavefront propagation technique to generate a globally consistent vector field that encodes the continuous shortest path direction from any point on the mesh to the goal.
@@ -79,11 +77,35 @@ mesh_map:
 
 ## Controller
 
-TODO: add a cover text
+Modern navigation on 3D surface meshes requires control strategies that can follow complex terrain while respecting the robot's kinematics.
+MeshNav provides multiple controllers tailored to this task—from a simple vector-field–based controller to a full Model Predictive Path Integral (MPPI) controller.
+This section introduces the available controllers, explains how they operate, and highlights when each should be used.
 
 
-### (Simple) Mesh Controller
+### Vector Field Controller (Default)
+
+![Vector Field Controller](/media/vector_field_controller.png)
+
+The vector field controller is the default controller used in the tutorials. It takes the vector field that was attached to the mesh by the planner and controls the robot along the field until it arrives at the desired goal.
+
+Source Code: [mesh_controller](https://github.com/naturerobots/mesh_navigation/tree/main/mesh_controller).
+
+??? note "No Obstacle Avoidance"
+
+    In the current implementation (!), the vector field does not react to the new dynamic obstacle layer. Therefore, it is not possible to respond to dynamic obstacles. Implementing this capability would be a substantial improvement. Don't forget to open a PR!
+
+### Mesh MPPI
+
+[![MeshMPPI GIF](/media/mesh_mppi/mesh_mppi_floor_is_lava.gif)](https://github.com/uos/mesh_mppi)
+
+MeshMPPI is an adaptation of the model predictive path integral (MPPI) control algorithm to surface meshes.
+The MPPI algorithm generates control signals by simulating the trajectories resulting from a set of random samples.
+This adaptation constraints the trajectory prediction to the surface defined by a triangular surface mesh.
+The implementation provided in this repository implements the MeshMPPI algorithm for the ROS2-based MeshNav 3D navigation stack.
+
+It can be used when extra attention is needed to ensure that motion planning is both kinematically and terrain feasible. It currently implements two kinematic models that can be used with either differential-drive or bicycle-drive robots. Furthermore, it reacts to the dynamic cost layers, enabling it to avoid dynamic or unmapped obstacles.
+
+Source Code: [mesh_mppi](https://github.com/uos/mesh_mppi), developed at [Osnabrück University (UOS)](https://github.com/uos).
 
 
-Problem: No obstacle avoidance
 
