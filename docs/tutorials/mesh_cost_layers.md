@@ -13,17 +13,16 @@ Mesh Navigation provides a collection of layers that pre-compute static traversi
 
 | Layer               | Plugin Type Specifier         | Description of Cost Computation          | Example Image                                                                           |
 | ------------------- | ----------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------- |
-| **HeightDiffLayer** | `mesh_layers/HeightDiffLayer` | local radius based height differences    | ![HeightDiffLayer](/media/costlayers/height_diff.jpg?raw=true "Height Diff Layer") |
+| **HeightDiffLayer** | `mesh_layers/HeightDiffLayer` | height difference in a radius around the vertex    | ![HeightDiffLayer](/media/costlayers/height_diff.jpg?raw=true "Height Diff Layer") |
 | **RoughnessLayer**  | `mesh_layers/RoughnessLayer`  | local radius based normal fluctuation    | ![RoughnessLayer](/media/costlayers/roughness.jpg?raw=true "Roughness Layer")      |
 | **SteepnessLayer**  | `mesh_layers/SteepnessLayer`  | arccos of the normal's z coordinate      | ![SteepnessLayer](/media/costlayers/steepness.jpg?raw=true "Steepness Layer")      |
-| **RidgeLayer**      | `mesh_layer/RidgeLayer`       | local radius based distance along normal | ![RidgeLayer](/media/costlayers/ridge.jpg?raw=true "RidgeLayer")                   |
+| **RidgeLayer**      | `mesh_layer/RidgeLayer`       | local radius based distance along normal. This can be useful to drive along ridge or bed structures in agricultural scenarios (e.g. potatoes, carrots, or onions). Hereby, the upper part of the ridges would have higher costs while the valleys would have low costs. This can be useful to plan vehicle wheel trajectories and only allow driving inside the ridge valleys (and thus not damage crops). | ![RidgeLayer](/media/costlayers/ridge.jpg?raw=true "RidgeLayer")                   |
 | **ClearanceLayer**  | `mesh_layers/ClearanceLayer`  | comparison of robot height and clearance along each vertex normal | ![ClearanceLayer](/media/costlayers/clearance.jpg?raw=true "Clearance Layer") |
 | **InflationLayer**  | `mesh_layers/InflationLayer`  | by distance to a lethal vertex           | ![InflationLayer](/media/costlayers/inflation.jpg?raw=true "Inflation Layer")      |
 | **BorderLayer** | `mesh_layers/BorderLayer` | give vertices close to the border a certain cost | ![BorderLayer](/media/costlayers/border.png?raw=true "Border Layer")   |
 
 
 ## Dynamic Layers
-
 
 ### Obstacle Layer
 

@@ -42,8 +42,7 @@ nav:
     - Why Meshes: theory/mesh_maps.md
   - Tutorials:
     - Overview: tutorials/index.md
-    - Quick-Start:
-      - Overview: tutorials/index.md
+    - Getting Started:
       - Mesh Navigation: tutorials/mesh_navigation.md
       - Cost Layers: tutorials/mesh_cost_layers.md
       - Planner & Controller: tutorials/planner_and_controller.md
@@ -57,8 +56,6 @@ nav:
       - Flatten Surfaces: tutorials/gen_edit/flatten_surface.md
       - Align Mesh to Ground: tutorials/gen_edit/align_mesh_to_ground.md
       - Shrink Faces: tutorials/gen_edit/shrink_faces.md
-    - Writing Plugins:
-      - Own Cost Layer: tutorials/plugins/own_cost_layer.md
   - Library:
     - Overview: library/index.md
     - Cost Layer Plugin: library/cost_layer_plugin.md
@@ -66,5 +63,6 @@ nav:
     - Controller Plugin: library/controller_plugin.md
   - Guides:
     - Overview: guides/index.md
+    - Writing Plugins: guides/meshnav_plugins.md
 
 

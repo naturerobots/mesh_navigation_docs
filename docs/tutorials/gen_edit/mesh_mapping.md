@@ -29,11 +29,11 @@ This list will grow.
 
 | Name | Link | MeshNav-proved? |
 |:----:|:----:|:----:|
-| Point-LIO | https://github.com/hku-mars/Point-LIO | unknown |
-| MOLA | https://github.com/MOLAorg/mola | unknown |
-| Slam6D | https://slam6d.sourceforge.io/ | Tested with high resulution Riegl scans |
-| GLIM   | https://github.com/koide3/glim | unknown |
-| Open3D | https://www.open3d.org/ | yes, [scripts](https://github.com/naturerobots/open3d_scripts) |
+| Point-LIO | [https://github.com/hku-mars/Point-LIO](https://github.com/hku-mars/Point-LIO) | unknown |
+| MOLA | [https://github.com/MOLAorg/mola](https://github.com/MOLAorg/mola) | unknown |
+| Slam6D | [https://slam6d.sourceforge.io/](https://slam6d.sourceforge.io/) | yes: Tested with high resulution Riegl scans |
+| GLIM   | [https://github.com/koide3/glim](https://github.com/koide3/glim) | yes: [A](https://github.com/JustusBraun/glim_scan_saver_ext), [B](https://github.com/JustusBraun/slam_to_mesh) |
+| Open3D | [https://www.open3d.org/](https://www.open3d.org/) | yes: [scripts](https://github.com/naturerobots/open3d_scripts) |
 
 The resulting PCD can be used to generate a mesh. See conversion tools.
 
@@ -41,26 +41,26 @@ The resulting PCD can be used to generate a mesh. See conversion tools.
 
 | Name | Link | MeshNav-proved? |
 |:----|:----|:----|
-| voxblox | https://github.com/ethz-asl/voxblox | unknown | 
-| nvblox | https://github.com/nvidia-isaac/nvblox | unknown |
-| Uni-Fusion | https://github.com/Jarrome/Uni-Fusion | unknown |
+| voxblox | [https://github.com/ethz-asl/voxblox](https://github.com/ethz-asl/voxblox) | unknown | 
+| nvblox | [https://github.com/nvidia-isaac/nvblox](https://github.com/nvidia-isaac/nvblox) | unknown |
+| Uni-Fusion | [https://github.com/Jarrome/Uni-Fusion](https://github.com/Jarrome/Uni-Fusion) | unknown |
 
 ### Mesh SLAM
 
 | Name | Link | MeshNav-proved? |
 |:----|:----|:--------|
-| Kinect Fusion | https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ismar2011.pdf | unknown |
-| PUMA | https://github.com/PRBonn/puma | unknown. unconnected mesh? |
-| SLAMesh | https://github.com/lab-sun/SLAMesh | unknown |
-| Warpsense | https://github.com/juliangaal/warpsense | unknown |
-| Kimera | https://github.com/MIT-SPARK/Kimera-VIO | unknown |
+| Kinect Fusion | [https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ismar2011.pdf](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ismar2011.pdf) | unknown |
+| PUMA | [https://github.com/PRBonn/puma](https://github.com/PRBonn/puma) | unknown. unconnected mesh? |
+| SLAMesh | [https://github.com/lab-sun/SLAMesh](https://github.com/lab-sun/SLAMesh) | unknown |
+| Warpsense | [https://github.com/juliangaal/warpsense](https://github.com/juliangaal/warpsense) | unknown |
+| Kimera | [https://github.com/MIT-SPARK/Kimera-VIO](https://github.com/MIT-SPARK/Kimera-VIO) | unknown |
 
 ### Other SLAM
 
 | Name | Link | MeshNav-proved? |
 |:----|:----|:--------|
-| PIN SLAM | https://github.com/PRBonn/PIN_SLAM | unknown. In first test, mesh was corrupted so I couldn't traverse with the lvr2 half-edge mesh. |
-| Loopy-SLAM | https://github.com/eriksandstroem/Loopy-SLAM | unknown |
+| PIN SLAM | [https://github.com/PRBonn/PIN_SLAM](https://github.com/PRBonn/PIN_SLAM) | unknown. In first test, mesh was corrupted so I couldn't traverse with the lvr2 half-edge mesh. |
+| Loopy-SLAM | [https://github.com/eriksandstroem/Loopy-SLAM](https://github.com/eriksandstroem/Loopy-SLAM) | unknown |
 
 ### Conversion Tools
 
@@ -68,9 +68,9 @@ It is also possible to convert certain data structures to others. Here a list:
 
 | Name | Link | Comments | MeshNav-proved? |
 |:----|:----|:--------|:-----|
-| lvr2 | https://github.com/uos/lvr2 | `lvr2_reconstruct` executable | yes |
-| meshlab | https://www.meshlab.net/ |  | yes |
-| Open3D | https://www.open3d.org/ | Example Open3D scripts: [Link](https://github.com/naturerobots/open3d_scripts) | yes |
+| lvr2 | [https://github.com/uos/lvr2](https://github.com/uos/lvr2) | `lvr2_reconstruct` executable | yes |
+| meshlab | [https://www.meshlab.net/](https://www.meshlab.net/) |  | yes |
+| Open3D | [https://www.open3d.org/](https://www.open3d.org/) | Example Open3D scripts: [Link](https://github.com/naturerobots/open3d_scripts) | yes |
 
 
 #### LVR2
