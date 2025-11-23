@@ -42,8 +42,7 @@ nav:
     - Why Meshes: theory/mesh_maps.md
   - Tutorials:
     - Overview: tutorials/index.md
-    - Quick-Start:
-      - Overview: tutorials/index.md
+    - Getting Started:
       - Mesh Navigation: tutorials/mesh_navigation.md
       - Cost Layers: tutorials/mesh_cost_layers.md
       - Planner & Controller: tutorials/planner_and_controller.md

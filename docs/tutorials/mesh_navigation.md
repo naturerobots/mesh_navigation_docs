@@ -1,6 +1,6 @@
-# Mesh Navigation
+# Mesh Navigation (Quick-Start)
 
-This tutorials aim to help quickly giving a feeling how to setup mesh_navigation properly and how to fine-tune several parameters. 
+This tutorial aims to help quickly giving a feeling how to setup mesh_navigation properly and how to fine-tune several parameters. 
 
 !!! Important
     You need [`mesh_navigation_tutorials`](https://github.com/naturerobots/mesh_navigation_tutorials) installed before continuing.
