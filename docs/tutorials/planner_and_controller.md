@@ -100,12 +100,11 @@ Source Code: [mesh_controller](https://github.com/naturerobots/mesh_navigation/t
 
 MeshMPPI is an adaptation of the model predictive path integral (MPPI) control algorithm to surface meshes.
 The MPPI algorithm generates control signals by simulating the trajectories resulting from a set of random samples.
-This adaptation constraints the trajectory prediction to the surface defined by a triangular surface mesh.
-The implementation provided in this repository implements the MeshMPPI algorithm for the ROS2-based MeshNav 3D navigation stack.
+This adaptation constrains the trajectory prediction to the surface defined by a triangular mesh.
+The implementation provided in this repository integrates the MeshMPPI algorithm into the ROS 2–based MeshNav 3D navigation stack.
 
-It can be used when extra attention is needed to ensure that motion planning is both kinematically and terrain feasible. It currently implements two kinematic models that can be used with either differential-drive or bicycle-drive robots. Furthermore, it reacts to the dynamic cost layers, enabling it to avoid dynamic or unmapped obstacles.
+It can be used when extra attention is needed to ensure that motion planning is both kinematically and terrain feasible. It currently implements two kinematic models that can be used with either differential-drive or bicycle-drive robots. Furthermore, it reacts to dynamic cost layers, enabling it to avoid dynamic or previously unmapped obstacles.
+Additionally, it provides a mechanism to easily extend the controller with custom kinematic models.
 
 Source Code: [mesh_mppi](https://github.com/uos/mesh_mppi), developed at [Osnabrück University (UOS)](https://github.com/uos).
-
-
 

@@ -48,14 +48,4 @@ This section explains how to get started with [MeshNav](https://github.com/natur
 * [Align Mesh to Ground](./gen_edit/align_mesh_to_ground.md)
 * [Shrink Faces](./gen_edit/shrink_faces.md)
 
----
-
-## Developers
-
-This section provides instructions on how to modify components and develop new features. Core concepts are explained in more detail to support extending the system.
-
-### Writing Plugins
-
-* [Custom Cost Layer](/tutorials/plugins/own_cost_layer.md)
-* *More coming soon…*
 
