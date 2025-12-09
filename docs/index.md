@@ -4,7 +4,7 @@
 <h4 align="center">Mesh Navigation Documentation</h4>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;" >
-    <iframe src="https://www.youtube.com/embed/gvKsW5MEC4Y?si=WohSZ_lEdIbxAZZK?autoplay=1&mute=1" 
+    <iframe src="https://www.youtube.com/embed/gvKsW5MEC4Y?si=p9EVZZCI3o6BnOAY?autoplay=1&mute=1" 
             title="YouTube Video" 
             frameborder="0" 
             allow="autoplay; encrypted-media" 
