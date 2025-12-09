@@ -37,9 +37,12 @@ nav:
   - Home:
     - Overview: index.md
     - Installation: installation.md
+    - Showcases: showcases.md
   - Theory:
     - Overview: theory/index.md
     - Why Meshes: theory/mesh_maps.md
+    - Path Planning: theory/path_planning.md
+    - Control: theory/control.md
   - Tutorials:
     - Overview: tutorials/index.md
     - Getting Started:
