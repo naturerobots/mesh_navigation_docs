@@ -32,7 +32,7 @@ This list will grow.
 | Point-LIO | [https://github.com/hku-mars/Point-LIO](https://github.com/hku-mars/Point-LIO) | unknown |
 | MOLA | [https://github.com/MOLAorg/mola](https://github.com/MOLAorg/mola) | unknown |
 | Slam6D | [https://slam6d.sourceforge.io/](https://slam6d.sourceforge.io/) | yes: Tested with high resulution Riegl scans |
-| GLIM   | [https://github.com/koide3/glim](https://github.com/koide3/glim) | yes: [A](https://github.com/JustusBraun/glim_scan_saver_ext), [B](https://github.com/JustusBraun/slam_to_mesh) |
+| GLIM   | [https://github.com/koide3/glim](https://github.com/koide3/glim) | yes: [Guide](/guides/mesh_mapping_glim.md) |
 | Open3D | [https://www.open3d.org/](https://www.open3d.org/) | yes: [scripts](https://github.com/naturerobots/open3d_scripts) |
 
 The resulting PCD can be used to generate a mesh. See conversion tools.
