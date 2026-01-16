@@ -1,0 +1,6 @@
+# Build artifacts
+site/
+
+# Python venv
+venv/
+.venv/

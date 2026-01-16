@@ -67,5 +67,6 @@ nav:
   - Guides:
     - Overview: guides/index.md
     - Writing Plugins: guides/meshnav_plugins.md
+    - Building a Mesh Map with GLIM: guides/mesh_mapping_glim.md
 
 
