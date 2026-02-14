@@ -1,0 +1,2276 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://naturerobots.github.io/mesh_navigation_docs/tutorials/gen_edit/mesh_mapping/">
+      
+      
+        <link rel="prev" href="../../deliberation/">
+      
+      
+        <link rel="next" href="../repair_mesh/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../media/mesh_nav_icon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Mesh Mapping - Mesh Navigation Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../static/stylesheets/style.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mesh-mapping" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Mesh Navigation Documentation" class="md-header__button md-logo" aria-label="Mesh Navigation Documentation" data-md-component="logo">
+      
+  <img src="../../../media/mesh_nav_icon_bg_white.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mesh Navigation Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mesh Mapping
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/naturerobots/mesh_navigation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../.." class="md-tabs__link">
+          
+  
+  
+  Home
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../theory/" class="md-tabs__link">
+          
+  
+  
+  Theory
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../library/" class="md-tabs__link">
+          
+  
+  
+  Library
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../guides/" class="md-tabs__link">
+          
+  
+  
+  Guides
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mesh Navigation Documentation" class="md-nav__button md-logo" aria-label="Mesh Navigation Documentation" data-md-component="logo">
+      
+  <img src="../../../media/mesh_nav_icon_bg_white.png" alt="logo">
+
+    </a>
+    Mesh Navigation Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/naturerobots/mesh_navigation" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Github
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Home
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../showcases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Showcases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Theory
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../theory/mesh_maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Why Meshes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../theory/path_planning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Path Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../theory/control/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutorials
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tutorials
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mesh_navigation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mesh Navigation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mesh_cost_layers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Layers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../planner_and_controller/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planner & Controller
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorial_worlds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Virtual Worlds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim-To-Real
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Sim-To-Real
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../deliberation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deliberation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mesh Generation & Editing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mesh Generation & Editing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mesh Mapping
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mesh Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-helpful-open-source-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List of Helpful Open-Source Software
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List of Helpful Open-Source Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pcd-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCD SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voxel-based-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voxel-based SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mesh SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversion Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lvr2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LVR2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meshlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meshlab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../repair_mesh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Repair Meshes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flatten_surface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flatten Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../align_mesh_to_ground/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Align Mesh to Ground
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shrink_faces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Shrink Faces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Library
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../library/cost_layer_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cost Layer Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../library/planner_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planner Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../library/controller_plugin/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Controller Plugin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/meshnav_plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Writing Plugins
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/mesh_mapping_glim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Building a Mesh Map with GLIM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-helpful-open-source-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List of Helpful Open-Source Software
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="List of Helpful Open-Source Software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pcd-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PCD SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voxel-based-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voxel-based SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mesh-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mesh SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Other SLAM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion Tools
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversion Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lvr2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LVR2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#meshlab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Meshlab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open3D
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimization
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="mesh-mapping">Mesh Mapping</h1>
+<p>There are many different strategies to mesh your environment.
+Some of them consist of multiple steps, which gives a greater control about intermediate results.
+Others generate meshes directly, which makes it faster, but also harder to figure out potential flaws.</p>
+<p>Most of those strategies consist of a simultaneous localization and mapping (SLAM) software somewhere in the chain.
+For simplicity, we distinguish SLAM software by the data structure they operate on and generate as output.</p>
+<p>For example, point cloud (PCD) SLAM is a SLAM software that operates on point clouds and generates a large PCD of the environment.
+There are exceptions, for example voxel-based SLAM often operate on voxel-representations, also producing large voxel-maps as end result, but also producing a mesh as side-product, such as Warpsense.
+Then we still consider it as voxel-based SLAM and handle the mesh output as if it was before converted from a voxel-based representation to a mesh. 
+So Warpsense, for example, is a voxel-based SLAM <em>and</em> also a mesh conversion tool.</p>
+<p>Then, the following procedures are possible to obtain a mesh from your environment, using different SLAM approaches:</p>
+<p><img alt="Meshing" src="../../../media/mesh_mapping_slam.png" /></p>
+<h2 id="list-of-helpful-open-source-software">List of Helpful Open-Source Software</h2>
+<h3 id="pcd-slam">PCD SLAM</h3>
+<p>This list will grow. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Name</th>
+<th style="text-align: center;">Link</th>
+<th style="text-align: center;">MeshNav-proved?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Point-LIO</td>
+<td style="text-align: center;"><a href="https://github.com/hku-mars/Point-LIO">https://github.com/hku-mars/Point-LIO</a></td>
+<td style="text-align: center;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: center;">MOLA</td>
+<td style="text-align: center;"><a href="https://github.com/MOLAorg/mola">https://github.com/MOLAorg/mola</a></td>
+<td style="text-align: center;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: center;">Slam6D</td>
+<td style="text-align: center;"><a href="https://slam6d.sourceforge.io/">https://slam6d.sourceforge.io/</a></td>
+<td style="text-align: center;">yes: Tested with high resulution Riegl scans</td>
+</tr>
+<tr>
+<td style="text-align: center;">GLIM</td>
+<td style="text-align: center;"><a href="https://github.com/koide3/glim">https://github.com/koide3/glim</a></td>
+<td style="text-align: center;">yes: <a href="../../../guides/mesh_mapping_glim/">Guide</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">Open3D</td>
+<td style="text-align: center;"><a href="https://www.open3d.org/">https://www.open3d.org/</a></td>
+<td style="text-align: center;">yes: <a href="https://github.com/naturerobots/open3d_scripts">scripts</a></td>
+</tr>
+</tbody>
+</table>
+<p>The resulting PCD can be used to generate a mesh. See conversion tools.</p>
+<h3 id="voxel-based-slam">Voxel-based SLAM</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">MeshNav-proved?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">voxblox</td>
+<td style="text-align: left;"><a href="https://github.com/ethz-asl/voxblox">https://github.com/ethz-asl/voxblox</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">nvblox</td>
+<td style="text-align: left;"><a href="https://github.com/nvidia-isaac/nvblox">https://github.com/nvidia-isaac/nvblox</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">Uni-Fusion</td>
+<td style="text-align: left;"><a href="https://github.com/Jarrome/Uni-Fusion">https://github.com/Jarrome/Uni-Fusion</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mesh-slam">Mesh SLAM</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">MeshNav-proved?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Kinect Fusion</td>
+<td style="text-align: left;"><a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ismar2011.pdf">https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/ismar2011.pdf</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">PUMA</td>
+<td style="text-align: left;"><a href="https://github.com/PRBonn/puma">https://github.com/PRBonn/puma</a></td>
+<td style="text-align: left;">unknown. unconnected mesh?</td>
+</tr>
+<tr>
+<td style="text-align: left;">SLAMesh</td>
+<td style="text-align: left;"><a href="https://github.com/lab-sun/SLAMesh">https://github.com/lab-sun/SLAMesh</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">Warpsense</td>
+<td style="text-align: left;"><a href="https://github.com/juliangaal/warpsense">https://github.com/juliangaal/warpsense</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+<tr>
+<td style="text-align: left;">Kimera</td>
+<td style="text-align: left;"><a href="https://github.com/MIT-SPARK/Kimera-VIO">https://github.com/MIT-SPARK/Kimera-VIO</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="other-slam">Other SLAM</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">MeshNav-proved?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">PIN SLAM</td>
+<td style="text-align: left;"><a href="https://github.com/PRBonn/PIN_SLAM">https://github.com/PRBonn/PIN_SLAM</a></td>
+<td style="text-align: left;">unknown. In first test, mesh was corrupted so I couldn't traverse with the lvr2 half-edge mesh.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Loopy-SLAM</td>
+<td style="text-align: left;"><a href="https://github.com/eriksandstroem/Loopy-SLAM">https://github.com/eriksandstroem/Loopy-SLAM</a></td>
+<td style="text-align: left;">unknown</td>
+</tr>
+</tbody>
+</table>
+<h3 id="conversion-tools">Conversion Tools</h3>
+<p>It is also possible to convert certain data structures to others. Here a list:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Link</th>
+<th style="text-align: left;">Comments</th>
+<th style="text-align: left;">MeshNav-proved?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">lvr2</td>
+<td style="text-align: left;"><a href="https://github.com/uos/lvr2">https://github.com/uos/lvr2</a></td>
+<td style="text-align: left;"><code>lvr2_reconstruct</code> executable</td>
+<td style="text-align: left;">yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">meshlab</td>
+<td style="text-align: left;"><a href="https://www.meshlab.net/">https://www.meshlab.net/</a></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">yes</td>
+</tr>
+<tr>
+<td style="text-align: left;">Open3D</td>
+<td style="text-align: left;"><a href="https://www.open3d.org/">https://www.open3d.org/</a></td>
+<td style="text-align: left;">Example Open3D scripts: <a href="https://github.com/naturerobots/open3d_scripts">Link</a></td>
+<td style="text-align: left;">yes</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lvr2">LVR2</h4>
+<p>The <a href="https://github.com/uos/lvr2">lvr2</a> project has a tool to reconstruct meshes from unordered point clouds:</p>
+<div class="highlight"><pre><span></span><code><span class="go">./bin/lvr2_reconstruct input_pcd.ply</span>
+</code></pre></div>
+<p>It uses the Marching Cubes algorithm to reconstruct a mesh from the <code>input_pcd.ply</code> and writes the resulting mesh to <code>triangle_mesh.ply</code>.</p>
+<p>The results look like this:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Point Cloud</th>
+<th style="text-align: center;">Triangle Mesh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="PCD" src="../../../media/pcd.png" /></td>
+<td style="text-align: center;"><img alt="Mesh" src="../../../media/mesh.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>lvr2_reconstruct</code> executable has many useful parameters that can be adjusted for different point cloud sizes, resultions, or environments.
+The parameters can be printed as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="go">./bin/lvr2_reconstruct --help</span>
+</code></pre></div>
+<p>Some important parameters are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Parameter</th>
+<th style="text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>-v 0.2</code></td>
+<td style="text-align: left;">Voxelsize for the Marching Cubes algorithm. Has to be set to the smallest possible triangle resolution you want to have.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--kn 5</code></td>
+<td style="text-align: left;">Number of nearest neighbors used for PCD normal computation. This depends on the PCD density and other environmental factors.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--ki 10</code></td>
+<td style="text-align: left;">Number of nearest neighbors used to interpolate the normals</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>--kd 10</code></td>
+<td style="text-align: left;">Number of nearest neighbors of each voxel corner to compute the signed distance values.</td>
+</tr>
+</tbody>
+</table>
+<p>There are more parameters that influence the way lvr2 is reconstructing surfaces from point clouds.
+My advise is to just test them and see what changes.</p>
+<h4 id="meshlab">Meshlab</h4>
+<p>MeshLab is an open-source software designed for processing and editing 3D triangular meshes, widely used for reconstructing surfaces from point clouds.
+It supports various algorithms to convert unstructured point clouds into coherent triangular meshes, such as Poisson surface reconstruction, and Marching Cubes.</p>
+<p>Further resources:
+- "Meshing Point Clouds": <a href="https://meshlabstuff.blogspot.com/2009/09/meshing-point-clouds.html">https://meshlabstuff.blogspot.com/2009/09/meshing-point-clouds.html</a></p>
+<h4 id="open3d">Open3D</h4>
+<p>Open3D is a versatile open-source library for 3D data processing that provides tools for surface reconstruction from point clouds using methods like Poisson reconstruction and alpha shapes. The following example showcases the usage of the python API to Poission reconstruction to extract surfaces:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">open3d</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">o3d</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="c1"># parameters for normal estimation for each point in PCD</span>
+<span class="n">ne_max_radius</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># choose this dependent on the scale and density of your PCD</span>
+<span class="n">ne_max_nn</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1"># choose this dependent on density of your PCD</span>
+
+<span class="c1"># parameters for poission reconstruction</span>
+<span class="n">possion_depth</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1"># the higher the more details, the more RAM is used</span>
+<span class="n">density_filter</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="c1"># filter surface patches with low &#39;evidence&#39;</span>
+
+<span class="c1"># This script reconstructs surfaces from a point cloud using Poisson Surface reconstruction</span>
+<span class="c1"># using Open3D&#39;s API (version 0.18.0)</span>
+<span class="c1"># </span>
+<span class="c1"># Input: point cloud -&gt; Output: mesh</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">file_in</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">file_out</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">pcd</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">read_point_cloud</span><span class="p">(</span><span class="n">file_in</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estimating point normals...&quot;</span><span class="p">)</span>
+    <span class="n">pcd</span><span class="o">.</span><span class="n">estimate_normals</span><span class="p">(</span><span class="n">search_param</span><span class="o">=</span><span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">KDTreeSearchParamHybrid</span><span class="p">(</span><span class="n">radius</span><span class="o">=</span><span class="n">ne_max_radius</span><span class="p">,</span> <span class="n">max_nn</span><span class="o">=</span><span class="n">ne_max_nn</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting Poisson surface reconstruction...&quot;</span><span class="p">)</span>
+    <span class="n">mesh</span><span class="p">,</span> <span class="n">densities</span> <span class="o">=</span> <span class="n">o3d</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">TriangleMesh</span><span class="o">.</span><span class="n">create_from_point_cloud_poisson</span><span class="p">(</span><span class="n">pcd</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Removing vertices with low Poission density&quot;</span><span class="p">)</span>
+    <span class="n">vertices_to_remove</span> <span class="o">=</span> <span class="n">densities</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">densities</span><span class="p">,</span> <span class="n">density_filter</span><span class="p">)</span>
+    <span class="n">mesh</span><span class="o">.</span><span class="n">remove_vertices_by_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">vertices_to_remove</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># Save the mesh</span>
+    <span class="n">o3d</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">write_triangle_mesh</span><span class="p">(</span><span class="n">file_out</span><span class="p">,</span> <span class="n">mesh</span><span class="p">)</span>
+</code></pre></div>
+<p>Further examples can be inferred from the official Open3D documention page: <a href="https://www.open3d.org/docs/release/">https://www.open3d.org/docs/release/</a>.</p>
+<h2 id="optimization">Optimization</h2>
+<p>After we generated a mesh using SLAM approaches, it often has a high resolution; normally, exactly as high as the internal voxel representation.
+However, we can reduce the number of faces at planar regions, while still describing the environment accurately. 
+This can be done using tools from various mesh editing software, such as <a href="https://www.blender.org/">Blender</a> or <a href="https://www.meshlab.net/">meshlab</a>.</p>
+<p>Or you can use the <code>lvr2_mesh_reduce</code> tool from the <a href="https://github.com/uos/lvr2">lvr2</a> project as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="go">./bin/lvr2_mesh_reduce input_mesh.ply -r 0.6</span>
+</code></pre></div>
+<p>It reduces the number of faces by a ratio of 0.6 and writes the results to <code>reduced_mesh.ply</code>, which would look as follows:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Triangle Mesh</th>
+<th style="text-align: center;">Optimized Mesh</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Mesh" src="../../../media/mesh.png" /></td>
+<td style="text-align: center;"><img alt="MeshOpti" src="../../../media/mesh_opti.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><em>Warning</em>: For malformed meshes, this tool will result in an PanicException. It's on our list of things that needed to be fixed. If you find a solution to that problem, please contact us.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../deliberation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Deliberation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Deliberation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../repair_mesh/" class="md-footer__link md-footer__link--next" aria-label="Next: Repair Meshes">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Repair Meshes
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
